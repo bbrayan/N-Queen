@@ -94,7 +94,10 @@ def solve():
             scramble()
             moves=0
 
-Board(1000)
+val=int(input("Enter board size: "))
+Board(val)
 solve()
+outputFile=open('output.txt', 'w')
 for i in range(len(rows)):
-    print((" o "*rows[i]+' X '+' o '*(len(rows)-rows[i]-1)))
+    print((" o "*rows[i]+' X '+' o '*(len(rows)-rows[i]-1)), file=outputFile)
+outputFile.close()
