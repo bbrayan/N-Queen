@@ -4,7 +4,7 @@ rows=[]
 conflicts=[]
 n = 0
 
-def Board(_n):
+def board(_n):
     global rows
     global conflicts
     global n
@@ -95,7 +95,7 @@ def solve():
             moves=0
 
 val=int(input("Enter board size: "))
-Board(val)
+board(val)
 solve()
 outputFile=open('output.txt', 'w')
 for i in range(len(rows)):
