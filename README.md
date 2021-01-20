@@ -5,4 +5,4 @@ the N-Queen problem is when Given a chessboard of n x n, the n-queen problem inv
 
 this project demonstrates how one can solve this problem with clever uses of data structures and hill climbing algorithum 
 
-![](image/easy.png)
+![](image/easy2.png)
