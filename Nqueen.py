@@ -19,7 +19,7 @@ def scramble():
     for i in range(0,n):
         rows[i] = i
     for i in range(n):
-        randT = random.randint(0,len(rows)-1)
+        randT = random.randint(0,len(rows) - 1)
         rowToSwap = rows[i]
         rows[i] = rows[randT]
         rows[randT] = rowToSwap
@@ -35,10 +35,10 @@ def update_conflicts_and_row(oldRow, col, newRow,):
         if (i == col):
             continue
         r = rows[i]
-        if(r == newRow or abs(r-newRow) == abs(i - col)):
+        if(r == newRow or abs(r - newRow) == abs(i - col)):
             newCount += 1
             conflicts[i] += 1
-        if(r == oldRow or abs(r-oldRow) == abs(i - col)):
+        if(r == oldRow or abs(r - oldRow) == abs(i - col)):
             conflicts[i] -= 1
     conflicts[col] = newCount
     rows[col] = newRow
@@ -98,5 +98,5 @@ board(val)
 solve()
 outputFile = open('output.txt', 'w')
 for i in range(len(rows)):
-    print((" o " * rows[i] + ' X ' + ' o ' * (len(rows)-rows[i]-1)), file = outputFile)
+    print((" o " * rows[i] + ' X ' + ' o ' * (len(rows) - rows[i] - 1)), file = outputFile)
 outputFile.close()
