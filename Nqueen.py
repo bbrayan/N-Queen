@@ -98,5 +98,5 @@ board(val)
 solve()
 outputFile = open('output.txt', 'w')
 for i in range(len(rows)):
-    print((" o " * rows[i] + ' X ' + ' o ' * (len(rows)-rows[i]-1)), file=outputFile)
+    print((" o " * rows[i] + ' X ' + ' o ' * (len(rows)-rows[i]-1)), file = outputFile)
 outputFile.close()
