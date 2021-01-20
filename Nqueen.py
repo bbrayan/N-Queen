@@ -9,14 +9,13 @@ def board(_n):
     global conflicts
     global n
     n = _n
-    rows = [0]*n
-    conflicts = [0]*n
+    rows = [0] * n
+    conflicts = [0] * n
     scramble()
 
 def scramble():
     global rows
     global n
-    #rows[0] = random.randint(0,len(rows)-1)
     for i in range(0,n):
         rows[i] = i
     for i in range(n):
@@ -33,13 +32,13 @@ def update_conflicts_and_row(oldRow, col, newRow,):
     global n
     newCount = 0
     for i in range(n):
-        if (i==col):
+        if (i == col):
             continue
         r = rows[i]
-        if(r==newRow or abs(r-newRow)==abs(i-col)):
+        if(r == newRow or abs(r-newRow) == abs(i - col)):
             newCount += 1
             conflicts[i] += 1
-        if(r==oldRow or abs(r-oldRow)==abs(i-col)):
+        if(r == oldRow or abs(r-oldRow) == abs(i - col)):
             conflicts[i] -= 1
     conflicts[col] = newCount
     rows[col] = newRow
@@ -48,10 +47,10 @@ def num_conflicts(row, col):
     global rows
     count = 0
     for i in range(len(rows)):
-        if (i==col):
+        if (i == col):
             continue
         r = rows[i]
-        if(r==row or abs(r-row)==abs(i-col)):
+        if(r == row or abs(r - row) == abs(i - col)):
             count += 1
     return count
 
@@ -66,13 +65,13 @@ def solve():
         candidates = []
         for i in range(n):
             confli = conflicts[i]
-            if confli==maxConflicts:
+            if confli == maxConflicts:
                 candidates.append(i)
-            elif confli>maxConflicts:
+            elif confli > maxConflicts:
                 maxConflicts = confli
                 candidates.clear()
                 candidates.append(i)
-        if (maxConflicts==0):
+        if (maxConflicts == 0):
             print("done")
             return
         worstQueenCol = random.choice(candidates)
@@ -80,17 +79,17 @@ def solve():
         oldRow = rows[worstQueenCol]
         candidates.clear()
         for i in range(n):
-            confli=num_conflicts(i, worstQueenCol)
+            confli = num_conflicts(i, worstQueenCol)
             if confli == minConflicts:
                 candidates.append(i)
-            elif confli<minConflicts:
+            elif confli < minConflicts:
                 minConflicts = confli
                 candidates.clear()
                 candidates.append(i)
         newRow = random.choice(candidates)
         update_conflicts_and_row(oldRow, worstQueenCol, newRow)
         moves += 1
-        if moves == len(rows)*2:
+        if moves == len(rows) * 2:
             scramble()
             moves = 0
 
@@ -99,5 +98,5 @@ board(val)
 solve()
 outputFile = open('output.txt', 'w')
 for i in range(len(rows)):
-    print((" o "*rows[i]+' X '+' o '*(len(rows)-rows[i]-1)), file=outputFile)
+    print((" o " * rows[i] + ' X ' + ' o ' * (len(rows)-rows[i]-1)), file=outputFile)
 outputFile.close()
