@@ -31,7 +31,7 @@ def update_conflicts_and_row(oldRow, col, newRow,):
     global rows
     global conflicts
     global n
-    newCount=0
+    newCount = 0
     for i in range(n):
         if (i==col):
             continue
@@ -75,8 +75,8 @@ def solve():
         if (maxConflicts==0):
             print("done")
             return
-        worstQueenCol=random.choice(candidates)
-        minConflicts=n
+        worstQueenCol = random.choice(candidates)
+        minConflicts = n
         oldRow = rows[worstQueenCol]
         candidates.clear()
         for i in range(n):
@@ -84,7 +84,7 @@ def solve():
             if confli == minConflicts:
                 candidates.append(i)
             elif confli<minConflicts:
-                minConflicts=confli
+                minConflicts = confli
                 candidates.clear()
                 candidates.append(i)
         newRow = random.choice(candidates)
